@@ -1,0 +1,249 @@
+<div class="hero-section">
+  <div class="hero-content-wrapper">
+    <h1 class="hero-title">
+      <span class="hero-title-line1">UBUNTU LAUNDRY</span>
+      <span class="hero-title-line2">LOUNGE</span>
+    </h1>
+    <p class="hero-tagline">The Clothing Care Tag Experts</p>
+    <p class="hero-description">Professional laundry services delivered fresh, clean, and convenient—right to your door!</p>
+    <button mat-raised-button color="accent" routerLink="/booking" class="hero-button">
+      Book Your Service Now
+    </button>
+  </div>
+</div>
+
+<div class="services-section">
+  <div class="container">
+    <h2 style="text-align: center; color: var(--dark-purple); margin-bottom: 20px; font-size: 2.5rem;">Our Services</h2>
+    <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 50px;">
+      Professional laundry care tailored to your needs—from washing and ironing to duvet cleaning and more
+    </p>
+    <div class="services-container">
+      <div class="service-feature" *ngFor="let service of services; let i = index" [class.service-left]="i % 2 === 0" [class.service-right]="i % 2 === 1">
+        <div class="service-visual">
+          <div class="service-icon-modern">
+            <mat-icon>{{ service.icon }}</mat-icon>
+          </div>
+        </div>
+        <div class="service-info">
+          <h3 class="service-heading">{{ service.title }}</h3>
+          <p class="service-text">{{ service.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="collection-points-section" style="padding: 60px 20px; background: linear-gradient(135deg, rgba(255, 182, 193, 0.1), rgba(177, 156, 217, 0.1));">
+  <div class="container">
+    <h2 style="text-align: center; color: var(--dark-purple); margin-bottom: 20px; font-size: 2.5rem;">Collection Points</h2>
+    <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 30px;">
+      We offer convenient pick-up and drop-off services at the following estates:
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-top: 40px; margin-bottom: 40px;">
+      <mat-card style="padding: 30px; background: linear-gradient(135deg, #f8f8f8, white); border: 2px solid var(--primary-purple);">
+        <mat-card-header>
+          <mat-card-title style="color: var(--dark-purple);">
+            <mat-icon style="vertical-align: middle; margin-right: 10px; color: var(--primary-purple);">schedule</mat-icon>
+            Pick-Up Times and Days
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p style="font-size: 1.2rem; font-weight: 600; margin: 15px 0; color: var(--dark-purple);">{{ contactInfo.pickupTimes.friday }}</p>
+          <p style="font-size: 1.2rem; font-weight: 600; margin: 15px 0; color: var(--dark-purple);">{{ contactInfo.pickupTimes.saturday }}</p>
+          <p style="font-size: 1.2rem; font-weight: 600; margin: 15px 0; color: var(--dark-purple);">{{ contactInfo.pickupTimes.sunday }}</p>
+          <div style="margin-top: 20px; padding: 15px; background: rgba(255, 182, 193, 0.2); border-radius: 8px; border-left: 4px solid var(--bright-pink);">
+            <p style="font-size: 1rem; color: #666; margin: 0;"><strong>Note:</strong> {{ contactInfo.bookingNote }}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="padding: 30px;">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon style="vertical-align: middle; margin-right: 10px; color: var(--primary-purple);">home</mat-icon>
+            Service Estates
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul style="list-style: none; padding: 0; margin: 10px 0;">
+            <li *ngFor="let estate of contactInfo.estates" style="padding: 8px 0; color: var(--dark-purple);">
+              <mat-icon style="font-size: 16px; width: 16px; height: 16px; vertical-align: middle; color: var(--teal);">check_circle</mat-icon>
+              {{ estate }}
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="pricing-section">
+  <div class="container">
+    <h2 style="text-align: center; color: var(--dark-purple); margin-bottom: 40px; font-size: 2.5rem;">Our Pricing</h2>
+    
+    <!-- Washing and Ironing -->
+    <div class="pricing-category" style="margin-bottom: 50px;">
+      <h3 style="color: var(--bright-pink); font-size: 1.8rem; margin-bottom: 30px; text-align: center;">Washing and Ironing</h3>
+      <div class="pricing-list">
+        <div class="pricing-item" *ngFor="let item of washingIroning">
+          <span class="pricing-label">{{ item.size }}</span>
+          <span class="pricing-value">{{ item.price }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Duvet Inners & Steaming -->
+    <div class="pricing-category" style="margin-bottom: 50px;">
+      <h3 style="color: var(--bright-pink); font-size: 1.8rem; margin-bottom: 30px; text-align: center;">Duvet Inners & Steaming</h3>
+      <div class="pricing-list">
+        <div class="pricing-item" *ngFor="let item of duvetSteaming">
+          <span class="pricing-label">{{ item.size }}</span>
+          <span class="pricing-value">{{ item.price }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blankets -->
+    <div class="pricing-category" style="margin-bottom: 50px;">
+      <h3 style="color: var(--bright-pink); font-size: 1.8rem; margin-bottom: 30px; text-align: center;">Blankets</h3>
+      <div class="pricing-list">
+        <div class="pricing-item" *ngFor="let item of blankets">
+          <span class="pricing-label">{{ item.ply }}</span>
+          <span class="pricing-value">{{ item.price }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bedding Sets & Ironing -->
+    <div class="pricing-category" style="margin-bottom: 50px;">
+      <h3 style="color: var(--bright-pink); font-size: 1.8rem; margin-bottom: 30px; text-align: center;">Bedding Sets & Ironing</h3>
+      <div class="pricing-list">
+        <div class="pricing-item" *ngFor="let item of beddingSets">
+          <span class="pricing-label">{{ item.size }}</span>
+          <span class="pricing-value">{{ item.price }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ironing Only or Tumble Dry -->
+    <div class="pricing-category" style="margin-bottom: 50px;">
+      <h3 style="color: var(--bright-pink); font-size: 1.8rem; margin-bottom: 30px; text-align: center;">Ironing Only or Tumble Dry</h3>
+      <div class="pricing-list">
+        <div class="pricing-item">
+          <span class="pricing-label">{{ ironingOnly.description }}</span>
+          <span class="pricing-value">{{ ironingOnly.price }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sneaker Wash -->
+    <div class="pricing-category" style="margin-bottom: 50px;">
+      <h3 style="color: var(--bright-pink); font-size: 1.8rem; margin-bottom: 30px; text-align: center;">Sneaker Wash</h3>
+      <div class="pricing-list">
+        <div class="pricing-item" *ngFor="let item of sneakerWash">
+          <span class="pricing-label">{{ item.type }}</span>
+          <span class="pricing-value">{{ item.price }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alterations & Patching -->
+    <div class="pricing-category" style="margin-bottom: 50px;">
+      <h3 style="color: var(--bright-pink); font-size: 1.8rem; margin-bottom: 30px; text-align: center;">Alterations & Patching</h3>
+      <div class="pricing-list">
+        <div class="pricing-item">
+          <span class="pricing-label">{{ alterations.description }}</span>
+          <span class="pricing-value">{{ alterations.price }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="contact-section" style="padding: 60px 20px; background: white;">
+  <div class="container">
+    <h2 style="text-align: center; color: var(--dark-purple); margin-bottom: 40px; font-size: 2.5rem;">Contact Us</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px;">
+      <mat-card style="background: linear-gradient(135deg, var(--pink), var(--primary-purple)); color: white;">
+        <mat-card-header>
+          <mat-card-title style="color: white;">
+            <mat-icon style="vertical-align: middle; margin-right: 10px;">phone</mat-icon>
+            Call / WhatsApp
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p style="font-size: 1.4rem; font-weight: 600; color: white; margin: 10px 0;">{{ contactInfo.phone }}</p>
+          <p style="color: rgba(255,255,255,0.9);">Available for calls and WhatsApp</p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon style="vertical-align: middle; margin-right: 10px; color: var(--primary-purple);">location_on</mat-icon>
+            Address
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p style="font-size: 1.1rem; color: var(--dark-purple); margin: 10px 0; line-height: 1.8;">
+            {{ contactInfo.address.street }}<br>
+            {{ contactInfo.address.suburb }},<br>
+            {{ contactInfo.address.city }}, {{ contactInfo.address.code }}
+          </p>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon style="vertical-align: middle; margin-right: 10px; color: var(--primary-purple);">email</mat-icon>
+            Email
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p style="font-size: 1.2rem; color: var(--dark-purple); margin: 10px 0;">{{ contactInfo.email }}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-top: 40px;">
+      <mat-card style="padding: 30px; background: linear-gradient(135deg, #f8f8f8, white); border: 2px solid var(--primary-purple);">
+        <mat-card-header>
+          <mat-card-title style="color: var(--dark-purple);">
+            <mat-icon style="vertical-align: middle; margin-right: 10px; color: var(--primary-purple);">schedule</mat-icon>
+            Pick-Up Times and Days
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p style="font-size: 1.2rem; font-weight: 600; margin: 15px 0; color: var(--dark-purple);">{{ contactInfo.pickupTimes.friday }}</p>
+          <p style="font-size: 1.2rem; font-weight: 600; margin: 15px 0; color: var(--dark-purple);">{{ contactInfo.pickupTimes.saturday }}</p>
+          <p style="font-size: 1.2rem; font-weight: 600; margin: 15px 0; color: var(--dark-purple);">{{ contactInfo.pickupTimes.sunday }}</p>
+          <div style="margin-top: 20px; padding: 15px; background: rgba(255, 182, 193, 0.2); border-radius: 8px; border-left: 4px solid var(--bright-pink);">
+            <p style="font-size: 1rem; color: #666; margin: 0;"><strong>Note:</strong> {{ contactInfo.bookingNote }}</p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card style="padding: 30px;">
+        <mat-card-header>
+          <mat-card-title>
+            <mat-icon style="vertical-align: middle; margin-right: 10px; color: var(--primary-purple);">home</mat-icon>
+            Service Estates
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul style="list-style: none; padding: 0; margin: 10px 0;">
+            <li *ngFor="let estate of contactInfo.estates" style="padding: 8px 0; color: var(--dark-purple);">
+              <mat-icon style="font-size: 16px; width: 16px; height: 16px; vertical-align: middle; color: var(--teal);">check_circle</mat-icon>
+              {{ estate }}
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+

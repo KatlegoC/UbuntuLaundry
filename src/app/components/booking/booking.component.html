@@ -1,0 +1,110 @@
+<div class="page-header">
+  <div class="container">
+    <h1>Book Your Service</h1>
+    <p>Schedule your convenient pick-up and drop-off service</p>
+  </div>
+</div>
+
+<div class="page-content">
+  <div class="form-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Complete Your Booking</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullName" required>
+            <mat-error *ngIf="bookingForm.get('fullName')?.hasError('required') && bookingForm.get('fullName')?.touched">
+              Full name is required
+            </mat-error>
+            <mat-error *ngIf="bookingForm.get('fullName')?.hasError('minlength') && bookingForm.get('fullName')?.touched">
+              Name must be at least 2 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phoneNumber" type="tel" required>
+            <mat-icon matPrefix>phone</mat-icon>
+            <mat-error *ngIf="bookingForm.get('phoneNumber')?.hasError('required') && bookingForm.get('phoneNumber')?.touched">
+              Phone number is required
+            </mat-error>
+            <mat-error *ngIf="bookingForm.get('phoneNumber')?.hasError('pattern') && bookingForm.get('phoneNumber')?.touched">
+              Please enter a valid phone number
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Service Type</mat-label>
+            <mat-select formControlName="serviceType" required>
+              <mat-option *ngFor="let service of serviceTypes" [value]="service">
+                {{ service }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="bookingForm.get('serviceType')?.hasError('required') && bookingForm.get('serviceType')?.touched">
+              Service type is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Collection Point (Estate)</mat-label>
+            <mat-select formControlName="collectionPoint" required>
+              <mat-option *ngFor="let point of collectionPoints" [value]="point">
+                {{ point }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matPrefix>location_on</mat-icon>
+            <mat-error *ngIf="bookingForm.get('collectionPoint')?.hasError('required') && bookingForm.get('collectionPoint')?.touched">
+              Collection point is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" [min]="minDate" required placeholder="Select a date" readonly>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="bookingForm.get('date')?.hasError('required') && bookingForm.get('date')?.touched">
+              Date is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Time</mat-label>
+            <input matInput type="time" formControlName="time" required placeholder="HH:MM">
+            <mat-icon matPrefix>access_time</mat-icon>
+            <mat-error *ngIf="bookingForm.get('time')?.hasError('required') && bookingForm.get('time')?.touched">
+              Time is required
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Entrance Code (Optional)</mat-label>
+            <input matInput formControlName="entranceCode" placeholder="For estate access">
+            <mat-icon matPrefix>vpn_key</mat-icon>
+            <mat-hint>Required for estate access</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Additional Notes (Optional)</mat-label>
+            <textarea matInput formControlName="additionalNotes" rows="4" placeholder="Include POP (Proof of Payment) details or any special instructions"></textarea>
+            <mat-hint>You can include POP details or special instructions here</mat-hint>
+          </mat-form-field>
+
+          <div style="padding: 15px; background: rgba(255, 182, 193, 0.1); border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--bright-pink);">
+            <p style="margin: 0; color: var(--dark-purple); font-size: 0.9rem;">
+              <strong>Important:</strong> To complete your booking, please send your entrance code and proof of payment (POP) via WhatsApp to 060 615 3772.
+            </p>
+          </div>
+
+          <button mat-raised-button color="primary" type="submit" class="full-width" (click)="onSubmit($event)">
+            Submit Booking
+          </button>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+

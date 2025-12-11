@@ -1,0 +1,28 @@
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.booking-card {
+  transition: all 0.3s;
+}
+
+.booking-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.completed {
+  border-left: 4px solid #4caf50;
+}
+
+.pending {
+  border-left: 4px solid #ff9800;
+}
+
+@media (max-width: 768px) {
+  .bookings-list {
+    gap: 15px;
+  }
+}
+

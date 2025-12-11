@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <span>Ubuntu Laundry Lounge</span>
+  <span class="spacer"></span>
+  <button mat-button routerLink="/" routerLinkActive="active">Home</button>
+  <button mat-button routerLink="/booking" routerLinkActive="active">Book Now</button>
+  <button mat-button routerLink="/contact" routerLinkActive="active">Contact</button>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+<footer style="background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple)); color: white; padding: 30px 20px; text-align: center; margin-top: 60px;">
+  <div class="container">
+    <p>&copy; 2024 Ubuntu Laundry Lounge. All rights reserved.</p>
+    <p style="margin-top: 10px;">Professional laundry services delivered fresh, clean, and convenient—right to your door!</p>
+  </div>
+</footer>
+
