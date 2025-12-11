@@ -3,10 +3,16 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3').verbose();
 const twilio = require('twilio');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// For Vercel serverless, we need to handle the database path differently
+const dbPath = process.env.VERCEL 
+  ? '/tmp/bookings.db' 
+  : path.join(__dirname, './bookings.db');
 
 // Middleware
 app.use(cors());
@@ -14,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Initialize SQLite database
-const db = new sqlite3.Database('./bookings.db', (err) => {
+const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Error opening database:', err.message);
   } else {
@@ -210,21 +216,26 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Ubuntu Laundry Lounge API is running' });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-  console.log(`Health check: http://localhost:${PORT}/health`);
-});
+// Export for Vercel serverless functions
+module.exports = app;
 
-// Graceful shutdown
-process.on('SIGINT', () => {
-  db.close((err) => {
-    if (err) {
-      console.error('Error closing database:', err.message);
-    } else {
-      console.log('Database connection closed');
-    }
-    process.exit(0);
+// Start server only if not in Vercel environment
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Health check: http://localhost:${PORT}/health`);
   });
-});
+
+  // Graceful shutdown
+  process.on('SIGINT', () => {
+    db.close((err) => {
+      if (err) {
+        console.error('Error closing database:', err.message);
+      } else {
+        console.log('Database connection closed');
+      }
+      process.exit(0);
+    });
+  });
+}
 

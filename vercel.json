@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/ubuntu-laundry-lounge"
+      }
+    },
+    {
+      "src": "server/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server/server.js"
+    },
+    {
+      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot))",
+      "dest": "/dist/ubuntu-laundry-lounge/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/dist/ubuntu-laundry-lounge/index.html"
+    }
+  ]
+}

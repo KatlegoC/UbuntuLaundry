@@ -127,9 +127,15 @@ body {
   .hero-section {
     background-image: url('/assets/hero-background-mobile.png');
     background-size: cover;
-    background-position: center 70%;
+    background-position: center 85%;
     min-height: 600px;
-    padding: 80px 20px;
+    padding: 80px 20px 40px 20px;
+  }
+  
+  /* Remove blurry light effects on mobile - show original image */
+  .hero-section::before,
+  .hero-section::after {
+    display: none;
   }
 }
 
@@ -798,12 +804,23 @@ mat-form-field .mat-error {
 
   .hero-section {
     min-height: 600px;
-    padding: 20px 15px 40px 15px;
+    padding: 40px 15px 40px 15px;
     background-image: url('/assets/hero-background-mobile.png');
     background-size: cover;
-    background-position: center 70%;
+    background-position: center 85%;
     align-items: flex-start;
-    padding-top: 20px;
+    padding-top: 40px;
+  }
+  
+  /* Remove blurry light effects on mobile - show original image */
+  .hero-section::before,
+  .hero-section::after {
+    display: none !important;
+  }
+  
+  /* Remove any filters that might blur the image */
+  .hero-content-wrapper {
+    filter: none !important;
   }
   
   .hero-content-wrapper {
@@ -1082,10 +1099,21 @@ mat-form-field .mat-error {
 
   .hero-section {
     min-height: 550px;
-    padding: 15px 12px 35px 12px;
+    padding: 35px 12px 35px 12px;
     background-image: url('/assets/hero-background-mobile.png');
     background-size: cover;
-    background-position: center 70%;
+    background-position: center 85%;
+  }
+  
+  /* Remove blurry light effects on smaller mobile - show original image */
+  .hero-section::before,
+  .hero-section::after {
+    display: none !important;
+  }
+  
+  /* Remove any filters that might blur the image */
+  .hero-content-wrapper {
+    filter: none !important;
   }
   
   .hero-content-wrapper {
