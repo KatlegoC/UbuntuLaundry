@@ -19,8 +19,23 @@
       "dest": "/server/server.js"
     },
     {
-      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot))",
-      "dest": "/dist/ubuntu-laundry-lounge/$1"
+      "src": "/(.*\\.(js|css|ico|png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot|json|map))",
+      "dest": "/dist/ubuntu-laundry-lounge/$1",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/admin",
+      "dest": "/dist/ubuntu-laundry-lounge/index.html"
+    },
+    {
+      "src": "/booking",
+      "dest": "/dist/ubuntu-laundry-lounge/index.html"
+    },
+    {
+      "src": "/contact",
+      "dest": "/dist/ubuntu-laundry-lounge/index.html"
     },
     {
       "src": "/(.*)",
