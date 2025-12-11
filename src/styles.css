@@ -129,13 +129,18 @@ body {
     background-size: cover;
     background-position: center 85%;
     min-height: 600px;
-    padding: 80px 20px 40px 20px;
+    padding: 50px 20px 40px 20px;
   }
   
   /* Remove blurry light effects on mobile - show original image */
   .hero-section::before,
   .hero-section::after {
     display: none;
+  }
+  
+  .hero-content-wrapper {
+    padding-top: 0;
+    margin-top: 0;
   }
 }
 
@@ -232,6 +237,15 @@ body {
   letter-spacing: 0.3px;
 }
 
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
 .hero-button {
   font-size: 1.15rem;
   padding: 16px 40px;
@@ -239,19 +253,66 @@ body {
   color: white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   margin: 0 auto;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   border-radius: 8px;
   transition: all 0.3s ease;
   font-weight: 500;
   letter-spacing: 0.5px;
   border: none;
   cursor: pointer;
+  text-decoration: none;
+  width: auto;
+  min-width: 200px;
+  line-height: 1;
+}
+
+.hero-button svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Desktop hero buttons layout */
+@media (min-width: 769px) {
+  .hero-buttons {
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .hero-button {
+    min-width: 220px;
+    width: auto;
+  }
 }
 
 .hero-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 16px rgba(0,0,0,0.35);
   background: #ff1493;
+}
+
+.whatsapp-button {
+  background: #25D366 !important;
+  color: white !important;
+}
+
+.whatsapp-button:hover {
+  background: #20BA5A !important;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-icon {
+  width: 20px;
+  height: 20px;
+  fill: white;
+  margin-right: 8px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .hero-section p {
@@ -804,12 +865,13 @@ mat-form-field .mat-error {
 
   .hero-section {
     min-height: 600px;
-    padding: 40px 15px 40px 15px;
+    padding: 10px 15px 50px 15px;
     background-image: url('/assets/hero-background-mobile.png');
     background-size: cover;
     background-position: center 85%;
     align-items: flex-start;
-    padding-top: 40px;
+    justify-content: center;
+    display: flex;
   }
   
   /* Remove blurry light effects on mobile - show original image */
@@ -818,90 +880,123 @@ mat-form-field .mat-error {
     display: none !important;
   }
   
-  /* Remove any filters that might blur the image */
+  /* Professional mobile hero content wrapper */
   .hero-content-wrapper {
     filter: none !important;
-  }
-  
-  .hero-content-wrapper {
     max-width: 100%;
     padding: 0 15px;
     justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 0;
+    padding-top: 0;
   }
   
   .hero-title {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-    margin-bottom: 16px;
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    margin-bottom: 20px;
+    margin-top: 0;
+    padding-top: 0;
     width: 100%;
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    text-shadow: 
+      2px 2px 8px rgba(0,0,0,0.5),
+      0 0 20px rgba(0,0,0,0.3);
+    line-height: 1.1;
   }
   
   .hero-title-line1 {
-    font-size: 2.5rem;
-    margin-bottom: 6px;
+    font-size: 2.75rem;
+    margin-bottom: 8px;
     line-height: 1.1;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     color: white;
+    display: block;
+    font-weight: 700;
   }
   
   .hero-title-line2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     line-height: 1.1;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     color: white;
+    display: block;
+    font-weight: 700;
   }
   
   .hero-tagline {
-    font-size: 1.15rem;
-    margin-bottom: 16px;
+    font-size: 1.2rem;
+    margin-bottom: 18px;
     max-width: 100%;
-    line-height: 1.4;
-    letter-spacing: 0.3px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
     color: white;
-    font-weight: 400;
+    font-weight: 500;
     font-style: italic;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    text-shadow: 
+      1px 1px 6px rgba(0,0,0,0.5),
+      0 0 10px rgba(0,0,0,0.3);
   }
   
   .hero-description {
-    font-size: 1rem;
-    margin-bottom: 24px;
+    font-size: 1.05rem;
+    margin-bottom: 28px;
     max-width: 100%;
-    line-height: 1.6;
-    letter-spacing: 0.2px;
+    line-height: 1.7;
+    letter-spacing: 0.3px;
     color: white;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    font-weight: 400;
+    text-shadow: 
+      1px 1px 6px rgba(0,0,0,0.5),
+      0 0 10px rgba(0,0,0,0.3);
+    padding: 0 5px;
   }
   
   .hero-button {
-    font-size: 1rem;
-    padding: 14px 32px;
+    font-size: 1.05rem;
+    padding: 16px 36px;
     width: auto;
     display: inline-block;
-    letter-spacing: 0.3px;
+    letter-spacing: 0.5px;
     margin-top: 0;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+  
+  .hero-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.4);
   }
   
   .services-section {
-    padding: 40px 15px;
+    padding: 50px 15px;
   }
 
   .services-section h2 {
-    font-size: 2rem !important;
-    margin-bottom: 15px !important;
+    font-size: 2.25rem !important;
+    margin-bottom: 18px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
   }
 
   .services-section p {
-    font-size: 1rem !important;
-    margin-bottom: 30px !important;
+    font-size: 1.05rem !important;
+    margin-bottom: 35px !important;
+    line-height: 1.6 !important;
   }
   
   .service-feature {
     flex-direction: column !important;
     text-align: center;
-    padding: 25px 20px;
-    gap: 25px;
+    padding: 30px 20px;
+    gap: 20px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 
   .service-feature.service-left,
@@ -939,64 +1034,77 @@ mat-form-field .mat-error {
   }
 
   .collection-points-section {
-    padding: 40px 15px !important;
+    padding: 50px 15px !important;
   }
 
   .collection-points-section h2 {
-    font-size: 2rem !important;
-    margin-bottom: 15px !important;
+    font-size: 2.25rem !important;
+    margin-bottom: 18px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
   }
 
   .collection-points-section p {
-    font-size: 1rem !important;
-    margin-bottom: 25px !important;
+    font-size: 1.05rem !important;
+    margin-bottom: 30px !important;
+    line-height: 1.6 !important;
   }
 
   .collection-points-section > .container > div[style*="grid"] {
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
-    margin-top: 30px !important;
-    margin-bottom: 30px !important;
+    gap: 22px !important;
+    margin-top: 35px !important;
+    margin-bottom: 35px !important;
   }
 
   .collection-points-section mat-card {
-    padding: 20px 15px !important;
+    padding: 24px 18px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
   }
 
   .collection-points-section mat-card-title {
-    font-size: 1.2rem !important;
+    font-size: 1.3rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 12px !important;
   }
 
   .collection-points-section mat-card-content p {
-    font-size: 1rem !important;
-    margin: 12px 0 !important;
+    font-size: 1.05rem !important;
+    margin: 14px 0 !important;
+    line-height: 1.6 !important;
   }
 
   .pricing-section {
-    padding: 40px 15px;
+    padding: 50px 15px;
   }
 
   .pricing-section h2 {
-    font-size: 2rem !important;
-    margin-bottom: 30px !important;
+    font-size: 2.25rem !important;
+    margin-bottom: 35px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
   }
 
   .pricing-section h3 {
-    font-size: 1.5rem !important;
-    margin-bottom: 15px !important;
+    font-size: 1.6rem !important;
+    margin-bottom: 18px !important;
+    font-weight: 600 !important;
   }
 
   .pricing-section > .container > div[style*="grid"] {
     grid-template-columns: 1fr !important;
-    gap: 15px !important;
+    gap: 18px !important;
     max-width: 100% !important;
   }
 
   .pricing-item {
-    padding: 18px 20px !important;
+    padding: 20px 22px !important;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   }
 
   .pricing-item:hover {
@@ -1099,10 +1207,12 @@ mat-form-field .mat-error {
 
   .hero-section {
     min-height: 550px;
-    padding: 35px 12px 35px 12px;
+    padding: 8px 12px 45px 12px;
     background-image: url('/assets/hero-background-mobile.png');
     background-size: cover;
     background-position: center 85%;
+    align-items: flex-start;
+    justify-content: center;
   }
   
   /* Remove blurry light effects on smaller mobile - show original image */
@@ -1111,72 +1221,124 @@ mat-form-field .mat-error {
     display: none !important;
   }
   
-  /* Remove any filters that might blur the image */
+  /* Professional smaller mobile hero content */
   .hero-content-wrapper {
     filter: none !important;
-  }
-  
-  .hero-content-wrapper {
     padding: 0 12px;
     padding-top: 0;
+    margin-top: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
   }
   
   .hero-title {
-    font-size: 2rem;
-    letter-spacing: 1.5px;
-    margin-bottom: 14px;
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    margin-top: 0;
+    padding-top: 0;
+    text-shadow: 
+      2px 2px 8px rgba(0,0,0,0.5),
+      0 0 20px rgba(0,0,0,0.3);
   }
   
   .hero-title-line1 {
-    font-size: 2rem;
-    margin-bottom: 5px;
-    letter-spacing: 1.5px;
+    font-size: 2.25rem;
+    margin-bottom: 7px;
+    letter-spacing: 2px;
+    font-weight: 700;
   }
   
   .hero-title-line2 {
-    font-size: 1.75rem;
-    letter-spacing: 1.5px;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    font-weight: 700;
   }
   
   .hero-tagline {
-    font-size: 1rem;
-    margin-bottom: 14px;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
     color: white;
-    font-weight: 400;
+    font-weight: 500;
     font-style: italic;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-  }
-  
-  .hero-description {
-    font-size: 0.9rem;
-    margin-bottom: 20px;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    text-shadow: 
+      1px 1px 6px rgba(0,0,0,0.5),
+      0 0 10px rgba(0,0,0,0.3);
     line-height: 1.5;
   }
   
-  .hero-button {
+  .hero-description {
     font-size: 0.95rem;
-    padding: 12px 28px;
+    margin-bottom: 24px;
+    color: white;
+    text-shadow: 
+      1px 1px 6px rgba(0,0,0,0.5),
+      0 0 10px rgba(0,0,0,0.3);
+    line-height: 1.6;
+    padding: 0 3px;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+  }
+  
+  .hero-button {
+    font-size: 1rem;
+    padding: 14px 32px;
+    width: 100%;
+    max-width: 260px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-weight: 600;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    line-height: 1;
+  }
+  
+  .hero-button svg {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  
+  .whatsapp-button {
+    background: #25D366 !important;
+  }
+  
+  .whatsapp-button:hover {
+    background: #20BA5A !important;
   }
 
   .services-section,
   .collection-points-section,
   .pricing-section,
   .contact-section {
-    padding: 30px 12px !important;
+    padding: 40px 12px !important;
   }
 
   .services-section h2,
   .collection-points-section h2,
   .pricing-section h2,
   .contact-section h2 {
-    font-size: 1.75rem !important;
+    font-size: 2rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
   }
 
   .service-feature {
-    padding: 25px 15px;
-    gap: 20px;
+    padding: 28px 18px;
+    gap: 22px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
 
   .service-icon-modern {
