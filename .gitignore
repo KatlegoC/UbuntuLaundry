@@ -5,6 +5,7 @@ server/node_modules/
 # Build outputs
 dist/
 out-tsc/
+.angular/cache/
 
 # Environment variables
 .env
